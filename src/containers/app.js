@@ -10,14 +10,17 @@ class App extends React.Component {
     this.state = {
       data: [
           {
-          id: 1,
+            id: 1,
               text: 'clean room'
           }, {
-          id: 2,
+            id: 2,
               text: 'wash the dishes'
           }, {
-          id: 3,
+            id: 3,
               text: 'feed my cat'
+          }, {
+            id: 4,
+              text: 'walk the dog'
           }
       ]
     };
@@ -33,7 +36,7 @@ class App extends React.Component {
   }
 
   removeTodo(id) {
-    const remainder = this.state.data.filter(todo => todo.id !== id).bind(this);
+    const remainder = this.state.data.filter(todo => todo.id !== id);
     this.setState({data: remainder});
   }
 
@@ -44,7 +47,7 @@ class App extends React.Component {
           <Title dataList={this.state.data.length}/>
         </div>
         <div>
-          <ToDoList todoTasks={this.state.data} remove={this.removeTodo}/>
+          <ToDoList todoTasks={this.state.data} remove={this.removeTodo.bind(this)}/>
         </div>
       </div>
     )
